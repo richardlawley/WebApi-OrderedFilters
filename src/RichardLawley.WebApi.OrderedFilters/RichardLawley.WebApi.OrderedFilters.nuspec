@@ -9,7 +9,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <projectUrl>https://github.com/RichardLawley/WebApi-OrderedFilters</projectUrl>
-    <copyright>Copyright Â© 2013 Richard Lawley</copyright>
+    <copyright>Copyright � 2013 Richard Lawley</copyright>
     <tags>webapi filters</tags>
   </metadata>
 </package>

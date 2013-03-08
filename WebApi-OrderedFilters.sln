@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichardLawley.WebApi.Ordere
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichardLawley.WebApi.OrderedFilters.Tests", "src\RichardLawley.WebApi.OrderedFilters.Tests\RichardLawley.WebApi.OrderedFilters.Tests.csproj", "{7805CD2C-2EAB-4DC7-97BA-DE7FD2EAEFE5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CDD3D51A-52FF-463F-A619-3A0D3B2B7E3B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2ADB4E08-9959-42B2-A61C-A8E9A1C4B160}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
