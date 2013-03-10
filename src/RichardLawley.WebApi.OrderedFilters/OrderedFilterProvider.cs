@@ -52,7 +52,8 @@ namespace RichardLawley.WebApi.OrderedFilters
                         .Select(fi => new OrderedFilterInfo(fi.Instance, fi.Scope)));
             }
 
-            return filters.OrderBy(i => i).Select(i => i.ConvertToFilterInfo());
+            var orderedFilters = filters.OrderBy(i => i).Select(i => i.ConvertToFilterInfo());
+            return orderedFilters;
         }
     }
 }

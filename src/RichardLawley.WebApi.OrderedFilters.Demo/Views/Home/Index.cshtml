@@ -1,0 +1,21 @@
+﻿<div id="body">
+    <section class="content-wrapper main-content clear-fix">
+        <p>
+            The box below will show the order of the filters executed.  Comment out OrderedFilterProvider line in Global.asax to see the change.
+        </p>
+
+        <input type="text" id="result" readonly="readonly" />
+    </section>
+</div>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        // Load the request...
+        var url = "api/values";
+
+        var value = jQuery.get(url, null, function (data) { $("#result").val(data); });
+    });
+
+</script>
