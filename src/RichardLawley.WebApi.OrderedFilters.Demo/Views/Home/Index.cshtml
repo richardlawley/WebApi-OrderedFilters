@@ -4,6 +4,10 @@
             The box below will show the order of the filters executed.  Comment out OrderedFilterProvider line in Global.asax to see the change.
         </p>
 
+        <p>
+            NB: Filters 0 and 4 are both Global.  Global Filters are always executed before Controller and Action filters.  Controller and Action filters are executed together.
+        </p>
+
         <input type="text" id="result" readonly="readonly" />
     </section>
 </div>

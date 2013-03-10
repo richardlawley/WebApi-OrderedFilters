@@ -87,5 +87,15 @@ namespace RichardLawley.WebApi.OrderedFilters.Tests
             filter1.CompareTo(filter2).ShouldBeLessThan(0);
             filter2.CompareTo(filter1).ShouldBeGreaterThan(0);
         }
+
+        [Test]
+        public void CompareTo_SortsGlobalFiltersFirst()
+        {
+            OrderedFilterInfo filter1 = new OrderedFilterInfo(new UnorderedFilter(), FilterScope.Action);
+            OrderedFilterInfo filter2 = new OrderedFilterInfo(new UnorderedFilter2(), FilterScope.Global);
+
+            filter1.CompareTo(filter2).ShouldBeGreaterThan(0);
+            filter2.CompareTo(filter1).ShouldBeLessThan(0);
+        }
     }
 }

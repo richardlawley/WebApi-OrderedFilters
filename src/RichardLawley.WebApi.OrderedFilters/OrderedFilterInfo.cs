@@ -35,12 +35,23 @@ namespace RichardLawley.WebApi.OrderedFilters
         {
             if (obj is OrderedFilterInfo)
             {
-                var filterInfo = obj as OrderedFilterInfo;
+                var otherfilterInfo = obj as OrderedFilterInfo;
+
+                // Global filters should be executed before Controller and Action Filters.  We don't strictly have to 
+                // do this, since it's done again in the framework, but it's a little more consistent for testing!
+                if (this.Scope == FilterScope.Global && otherfilterInfo.Scope != FilterScope.Global)
+                {
+                    return -10;
+                }
+                else if (this.Scope != FilterScope.Global && otherfilterInfo.Scope == FilterScope.Global)
+                {
+                    return 10;
+                }
 
                 IOrderedFilterAttribute thisAttribute = this.Instance as IOrderedFilterAttribute;
-                IOrderedFilterAttribute otherAttribute = filterInfo.Instance as IOrderedFilterAttribute;
+                IOrderedFilterAttribute otherAttribute = otherfilterInfo.Instance as IOrderedFilterAttribute;
                 IFilter thisNonOrderedAttribute = this.Instance as IFilter;
-                IFilter otherNonOrderedAttribute = filterInfo.Instance as IFilter;
+                IFilter otherNonOrderedAttribute = otherfilterInfo.Instance as IFilter;
 
                 if (thisAttribute != null && otherAttribute != null)
                 {
