@@ -9,7 +9,7 @@
     <Copyright>Richard Lawley</Copyright>
     <PackageProjectUrl>https://github.com/richardlawley/WebApi-OrderedFilters</PackageProjectUrl>
     <RepositoryUrl>https://github.com/richardlawley/WebApi-OrderedFilters</RepositoryUrl>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.0 - Update to net46, WebApi 2</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>WebApi-OrderedFilters.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
