@@ -2,11 +2,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichardLawley.WebApi.OrderedFilters", "src\RichardLawley.WebApi.OrderedFilters\RichardLawley.WebApi.OrderedFilters.csproj", "{7A53C3E7-FBBD-4504-A97C-2647995F6726}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RichardLawley.WebApi.OrderedFilters", "src\RichardLawley.WebApi.OrderedFilters\RichardLawley.WebApi.OrderedFilters.csproj", "{7A53C3E7-FBBD-4504-A97C-2647995F6726}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichardLawley.WebApi.OrderedFilters.Tests", "src\RichardLawley.WebApi.OrderedFilters.Tests\RichardLawley.WebApi.OrderedFilters.Tests.csproj", "{7805CD2C-2EAB-4DC7-97BA-DE7FD2EAEFE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RichardLawley.WebApi.OrderedFilters.Tests", "src\RichardLawley.WebApi.OrderedFilters.Tests\RichardLawley.WebApi.OrderedFilters.Tests.csproj", "{7805CD2C-2EAB-4DC7-97BA-DE7FD2EAEFE5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichardLawley.WebApi.OrderedFilters.Demo", "src\RichardLawley.WebApi.OrderedFilters.Demo\RichardLawley.WebApi.OrderedFilters.Demo.csproj", "{C2FDC1A9-7911-4004-A68B-7B77B9D93628}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DC3C7D70-195A-4496-8AEC-C07673E73F0A}"
+	ProjectSection(SolutionItems) = preProject
+		build.bat = build.bat
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

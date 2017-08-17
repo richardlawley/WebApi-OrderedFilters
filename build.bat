@@ -1,2 +1,2 @@
 echo off
-.\tools\psake\psake.bat %*
+dotnet pack src/RichardLawley.WebApi.OrderedFilters -c Release --include-symbols

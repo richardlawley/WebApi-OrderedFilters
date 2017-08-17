@@ -53,8 +53,8 @@ namespace RichardLawley.WebApi.OrderedFilters.Tests
             var filters = _filterProvider.GetFilters(_configuration, _mockActionDescriptor.Object);
 
             filters.Count().ShouldBe(2);
-            filters.ElementAt(0).Instance.ShouldBeTypeOf<OrderedFilter1>();
-            filters.ElementAt(1).Instance.ShouldBeTypeOf<OrderedFilter2>();
+            filters.ElementAt(0).Instance.ShouldBeOfType<OrderedFilter1>();
+            filters.ElementAt(1).Instance.ShouldBeOfType<OrderedFilter2>();
         }
 
         private static object[] GetFilters_OrderedTestCase = {
@@ -74,8 +74,8 @@ namespace RichardLawley.WebApi.OrderedFilters.Tests
             var filters = _filterProvider.GetFilters(_configuration, _mockActionDescriptor.Object);
 
             filters.Count().ShouldBe(2);
-            filters.ElementAt(0).Instance.ShouldBeTypeOf<OrderedFilter1>();
-            filters.ElementAt(1).Instance.ShouldBeTypeOf<UnorderedFilter>();
+            filters.ElementAt(0).Instance.ShouldBeOfType<OrderedFilter1>();
+            filters.ElementAt(1).Instance.ShouldBeOfType<UnorderedFilter>();
         }
 
         private static object[] GetFiltersTestCase = {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using NUnit.Framework;
+using Shouldly;
 
 namespace RichardLawley.WebApi.OrderedFilters.Tests
 {
@@ -10,7 +11,7 @@ namespace RichardLawley.WebApi.OrderedFilters.Tests
         public void BaseActionFilter_DefaultConstructor_SetsOrderToZero()
         {
             BaseActionFilterAttribute attribute = new OrderedActionFilter();
-            Assert.AreEqual(0, attribute.Order);
+            attribute.Order.ShouldBe(0);
         }
 
         [Test]
@@ -19,14 +20,14 @@ namespace RichardLawley.WebApi.OrderedFilters.Tests
             const int value = 42;
 
             BaseActionFilterAttribute attribute = new OrderedActionFilter(value);
-            Assert.AreEqual(value, attribute.Order);
+            attribute.Order.ShouldBe(value);
         }
 
         [Test]
         public void BaseAuthorizationFilter_DefaultConstructor_SetsOrderToZero()
         {
             BaseAuthorizationFilterAttribute attribute = new OrderedAuthorizationFilter();
-            Assert.AreEqual(0, attribute.Order);
+            attribute.Order.ShouldBe(0);
         }
 
         [Test]
@@ -35,14 +36,14 @@ namespace RichardLawley.WebApi.OrderedFilters.Tests
             const int value = 42;
 
             BaseAuthorizationFilterAttribute attribute = new OrderedAuthorizationFilter(value);
-            Assert.AreEqual(value, attribute.Order);
+            attribute.Order.ShouldBe(value);
         }
 
         [Test]
         public void BaseExceptionFilter_DefaultConstructor_SetsOrderToZero()
         {
             BaseExceptionFilterAttribute attribute = new OrderedExceptionFilter();
-            Assert.AreEqual(0, attribute.Order);
+            attribute.Order.ShouldBe(0);
         }
 
         [Test]
@@ -51,7 +52,7 @@ namespace RichardLawley.WebApi.OrderedFilters.Tests
             const int value = 42;
 
             BaseExceptionFilterAttribute attribute = new OrderedExceptionFilter(value);
-            Assert.AreEqual(value, attribute.Order);
+            attribute.Order.ShouldBe(value);
         }
     }
 }
