@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -10,10 +9,7 @@ using RichardLawley.WebApi.OrderedFilters.Demo.Filters;
 
 namespace RichardLawley.WebApi.OrderedFilters.Demo
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
-
-    public class WebApiApplication : System.Web.HttpApplication
+    public class WebApiApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -24,9 +20,9 @@ namespace RichardLawley.WebApi.OrderedFilters.Demo
 
             GlobalConfiguration.Configuration.Filters.Add(new TestOrderedFilter(4));
             GlobalConfiguration.Configuration.Filters.Add(new TestOrderedFilter(0));
-            
+
             // Enable the ordered filter provider
-            GlobalConfiguration.Configuration.Services.Replace(typeof(System.Web.Http.Filters.IFilterProvider), new OrderedFilterProvider());
+            //GlobalConfiguration.Configuration.Services.Replace(typeof(System.Web.Http.Filters.IFilterProvider), new OrderedFilterProvider());
         }
     }
 }

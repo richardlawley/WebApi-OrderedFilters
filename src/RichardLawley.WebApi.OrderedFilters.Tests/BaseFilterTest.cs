@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using NUnit.Framework;
 
 namespace RichardLawley.WebApi.OrderedFilters.Tests
 {
-    [ExcludeFromCodeCoverage]
     public class BaseFilterTest
     {
         [Test]
@@ -55,6 +53,5 @@ namespace RichardLawley.WebApi.OrderedFilters.Tests
             BaseExceptionFilterAttribute attribute = new OrderedExceptionFilter(value);
             Assert.AreEqual(value, attribute.Order);
         }
-
     }
 }

@@ -1,15 +1,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.3
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichardLawley.WebApi.OrderedFilters", "src\RichardLawley.WebApi.OrderedFilters\RichardLawley.WebApi.OrderedFilters.csproj", "{7A53C3E7-FBBD-4504-A97C-2647995F6726}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichardLawley.WebApi.OrderedFilters.Tests", "src\RichardLawley.WebApi.OrderedFilters.Tests\RichardLawley.WebApi.OrderedFilters.Tests.csproj", "{7805CD2C-2EAB-4DC7-97BA-DE7FD2EAEFE5}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2ADB4E08-9959-42B2-A61C-A8E9A1C4B160}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichardLawley.WebApi.OrderedFilters.Demo", "src\RichardLawley.WebApi.OrderedFilters.Demo\RichardLawley.WebApi.OrderedFilters.Demo.csproj", "{C2FDC1A9-7911-4004-A68B-7B77B9D93628}"
 EndProject
@@ -34,5 +29,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {369E8195-8EE3-491E-A275-D31769ADD118}
 	EndGlobalSection
 EndGlobal

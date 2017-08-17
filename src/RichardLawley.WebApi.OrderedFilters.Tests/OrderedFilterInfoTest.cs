@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http.Filters;
-using Moq;
-using Shouldly;
 using NUnit.Framework;
+using Shouldly;
 
 namespace RichardLawley.WebApi.OrderedFilters.Tests
 {
-    [ExcludeFromCodeCoverage]
     public class OrderedFilterInfoTest
     {
         [Test]

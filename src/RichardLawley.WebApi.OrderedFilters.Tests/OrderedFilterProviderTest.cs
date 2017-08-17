@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Controllers;
@@ -12,7 +11,6 @@ using Shouldly;
 
 namespace RichardLawley.WebApi.OrderedFilters.Tests
 {
-    [ExcludeFromCodeCoverage]
     public class OrderedFilterProviderTest
     {
         private IFilterProvider _filterProvider;
@@ -59,7 +57,7 @@ namespace RichardLawley.WebApi.OrderedFilters.Tests
             filters.ElementAt(1).Instance.ShouldBeTypeOf<OrderedFilter2>();
         }
 
-        static object[] GetFilters_OrderedTestCase = {
+        private static object[] GetFilters_OrderedTestCase = {
                 new object[] {new IFilter[] { new OrderedFilter1(), new OrderedFilter2()}},
                 new object[] {new IFilter[] { new OrderedFilter2(), new OrderedFilter1()}},
             };
@@ -80,7 +78,7 @@ namespace RichardLawley.WebApi.OrderedFilters.Tests
             filters.ElementAt(1).Instance.ShouldBeTypeOf<UnorderedFilter>();
         }
 
-        static object[] GetFiltersTestCase = {
+        private static object[] GetFiltersTestCase = {
                 new object[] {new IFilter[] { new OrderedFilter1(), new UnorderedFilter()}},
                 new object [] { new IFilter[] {new UnorderedFilter(), new OrderedFilter1()}},
             };
