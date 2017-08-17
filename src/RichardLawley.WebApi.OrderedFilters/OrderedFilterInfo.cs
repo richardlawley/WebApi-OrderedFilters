@@ -12,9 +12,7 @@ namespace RichardLawley.WebApi.OrderedFilters
     {
         public OrderedFilterInfo(IFilter instance, FilterScope scope)
         {
-            if (instance == null) { throw new ArgumentNullException("instance"); }
-
-            Instance = instance;
+            Instance = instance ?? throw new ArgumentNullException(nameof(instance));
             Scope = scope;
         }
 
@@ -37,7 +35,7 @@ namespace RichardLawley.WebApi.OrderedFilters
             {
                 var otherfilterInfo = obj as OrderedFilterInfo;
 
-                // Global filters should be executed before Controller and Action Filters.  We don't strictly have to 
+                // Global filters should be executed before Controller and Action Filters.  We don't strictly have to
                 // do this, since it's done again in the framework, but it's a little more consistent for testing!
                 if (this.Scope == FilterScope.Global && otherfilterInfo.Scope != FilterScope.Global)
                 {
@@ -48,10 +46,10 @@ namespace RichardLawley.WebApi.OrderedFilters
                     return 10;
                 }
 
-                IOrderedFilterAttribute thisAttribute = this.Instance as IOrderedFilterAttribute;
-                IOrderedFilterAttribute otherAttribute = otherfilterInfo.Instance as IOrderedFilterAttribute;
-                IFilter thisNonOrderedAttribute = this.Instance as IFilter;
-                IFilter otherNonOrderedAttribute = otherfilterInfo.Instance as IFilter;
+                var thisAttribute = Instance as IOrderedFilterAttribute;
+                var otherAttribute = otherfilterInfo.Instance as IOrderedFilterAttribute;
+                var thisNonOrderedAttribute = this.Instance as IFilter;
+                var otherNonOrderedAttribute = otherfilterInfo.Instance as IFilter;
 
                 if (thisAttribute != null && otherAttribute != null)
                 {
@@ -59,7 +57,7 @@ namespace RichardLawley.WebApi.OrderedFilters
                     if (value == 0)
                     {
                         // If they both have the same order, sort by name instead
-                        value = thisAttribute.GetType().FullName.CompareTo(otherAttribute.GetType().FullName);
+                        value = string.Compare(thisAttribute.GetType().FullName, otherAttribute.GetType().FullName, StringComparison.Ordinal);
                     }
 
                     return value;
@@ -73,7 +71,7 @@ namespace RichardLawley.WebApi.OrderedFilters
                     return -1;
                 }
                 {
-                    return thisNonOrderedAttribute.GetType().FullName.CompareTo(otherNonOrderedAttribute.GetType().FullName);
+                    return string.Compare(thisNonOrderedAttribute.GetType().FullName, otherNonOrderedAttribute.GetType().FullName, StringComparison.Ordinal);
                 }
             }
             else

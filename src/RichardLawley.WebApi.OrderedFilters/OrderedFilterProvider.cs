@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
@@ -14,14 +12,13 @@ namespace RichardLawley.WebApi.OrderedFilters
     /// </summary>
     public class OrderedFilterProvider : IFilterProvider
     {
-        private List<IFilterProvider> _filterProviders;
+        private readonly List<IFilterProvider> _filterProviders = new List<IFilterProvider>();
 
         /// <summary>
         /// Constructor using default filter providers
         /// </summary>
         public OrderedFilterProvider()
         {
-            _filterProviders = new List<IFilterProvider>();
             _filterProviders.Add(new ConfigurationFilterProvider());
             _filterProviders.Add(new ActionDescriptorFilterProvider());
         }
@@ -40,10 +37,10 @@ namespace RichardLawley.WebApi.OrderedFilters
         /// </summary>
         public IEnumerable<FilterInfo> GetFilters(HttpConfiguration configuration, HttpActionDescriptor actionDescriptor)
         {
-            if (configuration == null) { throw new ArgumentNullException("configuration"); }
-            if (actionDescriptor == null) { throw new ArgumentNullException("actionDescriptor"); }
+            if (configuration == null) { throw new ArgumentNullException(nameof(configuration)); }
+            if (actionDescriptor == null) { throw new ArgumentNullException(nameof(actionDescriptor)); }
 
-            List<OrderedFilterInfo> filters = new List<OrderedFilterInfo>();
+            var filters = new List<OrderedFilterInfo>();
 
             foreach (IFilterProvider fp in _filterProviders)
             {
@@ -52,7 +49,7 @@ namespace RichardLawley.WebApi.OrderedFilters
                         .Select(fi => new OrderedFilterInfo(fi.Instance, fi.Scope)));
             }
 
-            var orderedFilters = filters.OrderBy(i => i).Select(i => i.ConvertToFilterInfo());
+            IEnumerable<FilterInfo> orderedFilters = filters.OrderBy(i => i).Select(i => i.ConvertToFilterInfo());
             return orderedFilters;
         }
     }

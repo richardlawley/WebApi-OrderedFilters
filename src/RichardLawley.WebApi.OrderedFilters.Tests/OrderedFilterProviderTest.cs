@@ -45,12 +45,12 @@ namespace RichardLawley.WebApi.OrderedFilters.Tests
         [TestCaseSource("GetFilters_OrderedTestCase")]
         public void GetFilters_ReturnsFiltersInCorrectOrder(IEnumerable<IFilter> input)
         {
-            foreach (var filter in input)
+            foreach (IFilter filter in input)
             {
                 _configuration.Filters.Add(filter);
             }
 
-            var filters = _filterProvider.GetFilters(_configuration, _mockActionDescriptor.Object);
+            IEnumerable<FilterInfo> filters = _filterProvider.GetFilters(_configuration, _mockActionDescriptor.Object);
 
             filters.Count().ShouldBe(2);
             filters.ElementAt(0).Instance.ShouldBeOfType<OrderedFilter1>();
@@ -66,12 +66,12 @@ namespace RichardLawley.WebApi.OrderedFilters.Tests
         [TestCaseSource("GetFiltersTestCase")]
         public void GetFilters_ReturnsOrderedFiltersBeforeUnorderedFilters(IEnumerable<IFilter> input)
         {
-            foreach (var filter in input)
+            foreach (IFilter filter in input)
             {
                 _configuration.Filters.Add(filter);
             }
 
-            var filters = _filterProvider.GetFilters(_configuration, _mockActionDescriptor.Object);
+            IEnumerable<FilterInfo> filters = _filterProvider.GetFilters(_configuration, _mockActionDescriptor.Object);
 
             filters.Count().ShouldBe(2);
             filters.ElementAt(0).Instance.ShouldBeOfType<OrderedFilter1>();
@@ -102,7 +102,7 @@ namespace RichardLawley.WebApi.OrderedFilters.Tests
             IFilter testGlobalFilter = new UnorderedFilter();
             _configuration.Filters.Add(testGlobalFilter);
 
-            var filters = _filterProvider.GetFilters(_configuration, _mockActionDescriptor.Object);
+            IEnumerable<FilterInfo> filters = _filterProvider.GetFilters(_configuration, _mockActionDescriptor.Object);
 
             filters.ShouldContain(f => f.Instance == testGlobalFilter);
             _mockControllerDescriptor.Verify(d => d.GetFilters(), Times.Once(), "Controller Filters were not requested");
@@ -112,14 +112,14 @@ namespace RichardLawley.WebApi.OrderedFilters.Tests
         [Test]
         public void WithCustomConstructor_OnlyCustomActionDescriptorFilterProvidersAreUsed()
         {
-            Mock<IFilterProvider> mockFilterProvider = new Mock<IFilterProvider>();
+            var mockFilterProvider = new Mock<IFilterProvider>();
             mockFilterProvider.Setup(p => p.GetFilters(It.IsAny<HttpConfiguration>(), It.IsAny<HttpActionDescriptor>())).Returns(() => Enumerable.Empty<FilterInfo>());
 
             IFilter testGlobalFilter = new UnorderedFilter();
             _configuration.Filters.Add(testGlobalFilter);
 
             _filterProvider = new OrderedFilterProvider(new[] { mockFilterProvider.Object });
-            var filters = _filterProvider.GetFilters(_configuration, _mockActionDescriptor.Object);
+            IEnumerable<FilterInfo> filters = _filterProvider.GetFilters(_configuration, _mockActionDescriptor.Object);
 
             filters.ShouldNotContain(f => f.Instance == testGlobalFilter);
             _mockControllerDescriptor.Verify(d => d.GetFilters(), Times.Never(), "Controller Filters should not have been requested");

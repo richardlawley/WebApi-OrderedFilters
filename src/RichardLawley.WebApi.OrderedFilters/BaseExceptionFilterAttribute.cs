@@ -14,12 +14,12 @@ namespace RichardLawley.WebApi.OrderedFilters
         /// </summary>
         public int Order { get; set; }
 
-        public BaseExceptionFilterAttribute()
+        protected BaseExceptionFilterAttribute()
         {
             Order = 0;
         }
 
-        public BaseExceptionFilterAttribute(int order)
+        protected BaseExceptionFilterAttribute(int order)
         {
             Order = order;
         }
