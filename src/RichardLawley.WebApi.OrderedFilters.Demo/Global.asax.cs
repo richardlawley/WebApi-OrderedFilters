@@ -22,7 +22,7 @@ namespace RichardLawley.WebApi.OrderedFilters.Demo
             GlobalConfiguration.Configuration.Filters.Add(new TestOrderedFilter(0));
 
             // Enable the ordered filter provider
-            //GlobalConfiguration.Configuration.Services.Replace(typeof(System.Web.Http.Filters.IFilterProvider), new OrderedFilterProvider());
+            GlobalConfiguration.Configuration.Services.Replace(typeof(System.Web.Http.Filters.IFilterProvider), new OrderedFilterProvider());
         }
     }
 }
